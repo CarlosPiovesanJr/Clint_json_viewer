@@ -3,19 +3,19 @@ let caminhos = [];
 function analisarJSON() {
     const jsonInput = document.getElementById('jsonInput').value;
     const jsonOutput = document.getElementById('jsonOutput');
-    
+
     try {
         const jsonData = JSON.parse(jsonInput);
         caminhos = [];
-        
+
         function encontrarCaminhos(obj, caminhoAtual = '') {
             for (const [chave, valor] of Object.entries(obj)) {
                 const isArray = Array.isArray(obj);
                 const chaveFormatada = isArray ? `[${chave}]` : chave;
-                const novoCaminho = caminhoAtual 
-                    ? `${caminhoAtual}${isArray ? '' : '.'}${chaveFormatada}` 
+                const novoCaminho = caminhoAtual
+                    ? `${caminhoAtual}${isArray ? '' : '.'}${chaveFormatada}`
                     : chaveFormatada;
-                
+
                 if (typeof valor === 'object' && valor !== null) {
                     encontrarCaminhos(valor, novoCaminho);
                 } else {
@@ -28,22 +28,22 @@ function analisarJSON() {
                 }
             }
         }
-        
+
         encontrarCaminhos(jsonData);
-        
+
         // Função para criar a visualização hierárquica
         function criarVisualizacaoHierarquica(obj, nivel = 0, caminhoAtual = '') {
             let html = '';
             const indentacao = nivel * 16;
-            
+
             for (const [chave, valor] of Object.entries(obj)) {
                 const isArray = Array.isArray(obj);
                 const chaveFormatada = isArray ? `[${chave}]` : chave;
                 const isObjeto = typeof valor === 'object' && valor !== null;
-                const novoCaminho = caminhoAtual 
-                    ? `${caminhoAtual}${isArray ? '' : '.'}${chaveFormatada}` 
+                const novoCaminho = caminhoAtual
+                    ? `${caminhoAtual}${isArray ? '' : '.'}${chaveFormatada}`
                     : chaveFormatada;
-                
+
                 html += `
                     <div class="nivel-${nivel}" style="margin-left: ${indentacao}px">
                         <div class="flex items-center space-x-2 py-0.5 hover:bg-gray-50 rounded cursor-pointer" onclick="selecionarCampo('${novoCaminho}')">
@@ -69,10 +69,10 @@ function analisarJSON() {
                     </div>
                 `;
             }
-            
+
             return html;
         }
-        
+
         // Formatar a saída
         let outputHTML = `
             <div class="space-y-2">
@@ -82,7 +82,7 @@ function analisarJSON() {
                 </div>
             </div>
         `;
-        
+
         jsonOutput.innerHTML = outputHTML;
     } catch (erro) {
         jsonOutput.innerHTML = `
@@ -97,49 +97,63 @@ function analisarJSON() {
 function toggleNivel(btn) {
     const conteudo = btn.parentElement.nextElementSibling;
     const isExpanded = conteudo.style.display !== 'none';
-    
+
     conteudo.style.display = isExpanded ? 'none' : 'block';
     btn.querySelector('svg').style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(90deg)';
 }
 
 function selecionarCampo(caminho) {
     if (!caminho) return;
-    
+
     const campo = caminhos.find(c => c.caminho === caminho);
     if (!campo) return;
-    
+
     // Remove o prefixo 'body' do caminho
     const caminhoSemBody = campo.caminho.replace(/^body\./, '');
-    
+
     const mapeamentoSelecionado = document.getElementById('mapeamentoSelecionado');
     mapeamentoSelecionado.innerHTML = `
-        <div class="space-y-2">
+        <div class="space-y-4">
             <div class="flex flex-col space-y-1">
-                <span class="text-gray-500 text-sm">Nome do Campo:</span>
-                <span class="font-medium text-gray-800 text-sm">${campo.nome}</span>
+                <span class="text-gray-800 text-sm font-semibold">Nome do Campo:</span>
+                <span class="px-1.5 py-0.5 bg-gray-100 rounded text-xs text-gray-700 w-fit">${campo.nome}</span>
             </div>
             <div class="flex flex-col space-y-1">
-                <span class="text-gray-500 text-sm">Tipo:</span>
+                <span class="text-gray-800 text-sm font-semibold">Tipo:</span>
                 <div class="flex">
                     <span class="px-1.5 py-0.5 bg-gray-100 rounded text-xs text-gray-700 w-fit">${campo.tipo}</span>
                 </div>
             </div>
             <div class="flex flex-col space-y-1">
-                <span class="text-gray-500 text-sm">Valor:</span>
-                <span class="font-medium text-gray-800 text-sm">${campo.valor}</span>
+                <span class="text-gray-800 text-sm font-semibold">Valor:</span>
+                <span class="px-1.5 py-0.5 bg-gray-100 rounded text-xs text-gray-700 w-fit">${campo.valor}</span>
             </div>
             <div class="flex flex-col space-y-1">
-                <span class="text-gray-500 text-sm">Caminho:</span>
+                <span class="text-gray-800 text-sm font-semibold">Caminho:</span>
                 <div class="flex">
                     <code class="px-1.5 py-0.5 bg-gray-100 rounded text-xs text-gray-700 w-fit">${campo.caminho}</code>
                 </div>
             </div>
-            <div class="flex flex-col space-y-1 mt-4 pt-4 border-t border-gray-100">
-                <span class="text-gray-500 text-sm font-semibold">Mapeamento Clint:</span>
+            <div class="flex flex-col space-y-1">
+                <span class="text-gray-800 text-sm font-semibold">Mapeamento Clint:</span>
                 <div class="flex">
                     <code class="px-1.5 py-0.5 bg-gray-100 rounded text-xs text-gray-700 w-fit">${caminhoSemBody}</code>
                 </div>
             </div>
         </div>
     `;
+}
+
+function filtrarCampos() {
+    const termo = document.getElementById('filtroCampos').value.toLowerCase();
+    const blocos = document.querySelectorAll('#jsonOutput .nivel-0 > div');
+
+    blocos.forEach(bloco => {
+        const texto = bloco.innerText.toLowerCase();
+        if (texto.includes(termo)) {
+            bloco.style.display = '';
+        } else {
+            bloco.style.display = 'none';
+        }
+    });
 }
