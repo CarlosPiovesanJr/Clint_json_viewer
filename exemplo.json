@@ -1,0 +1,172 @@
+{
+    "body": {
+        "form": {
+            "form_id": "7MlSiE80",
+            "form_name": "Formulário de Aplicação | Universidade Comercial"
+        },
+        "respondent": {
+            "date": "2025-04-17 13:32:29",
+            "score": null,
+            "status": "completed",
+            "answers": {
+                "Qual é seu melhor email?": "vifacury@yahoo.com.br",
+                "Qual é seu nome completo?": "Victoria",
+                "Digite o número do seu whats app com DDD": "55 11973150425",
+                "E qual tem sido o seu faturamento mensal em média?": "3.333,33",
+                "E hoje, qual é a sua meta de faturamento para 2025?": "33.333,33",
+                "Quero dar uma olhadinha no seu instagram, me fala seu @": "ddd",
+                "Por que você se interessou pela Universidade Comercial?": "dddd",
+                "Você já participou de algum evento nosso, seja gratuito ou pago?": "Sim, evento online",
+                "E me conta aqui, qual tem sido o seu maior desafio profissional hoje?": "ddddd",
+                "Você foi indicado por alguém? Se sim, me conta quem foi a benção?": "ddd",
+                "Obrigada pelas respostas!\nVamos entrar em contato em até 48 horas, ok?": "Entendido!",
+                "Caso você atinja a sua meta, o que pretende realizar e/ou melhorar na sua vida?": "ddd",
+                "O que você acredita que é preciso ser feito para solucionar sua dificuldade/desafio?": "dddd",
+                "Fala um pouco sobre sua jornada profissional até agora. Vale tudo, do mundo físico até aqui no mundo digital, e na área comercial (se houver).": "dddd",
+                "Se entendermos que a Universidade Comercial é ideal para o seu momento atual, o investimento para ter acesso por 1 ano é 12x de 499,70 no cartão de crédito ou R$ 4.997 à vista. Como fica melhor para você, cartão de crédito parcelado ou à vista no pix?": "R$4.997 à vista no PIX"
+            },
+            "raw_answers": [
+                {
+                    "answer": "victoria",
+                    "question": {
+                        "question_id": "25de461b5004",
+                        "question_type": "name",
+                        "question_title": "Qual é seu nome completo?"
+                    }
+                },
+                {
+                    "answer": {
+                        "phone": "11973150425",
+                        "country": "55"
+                    },
+                    "question": {
+                        "question_id": "xq5iuxjbiwif",
+                        "question_type": "phone",
+                        "question_title": "Digite o número do seu whats app com DDD"
+                    }
+                },
+                {
+                    "answer": "vifacury@yahoo.com.br",
+                    "question": {
+                        "question_id": "xzcksta6ctxs",
+                        "question_type": "email",
+                        "question_title": "Qual é seu melhor email?"
+                    }
+                },
+                {
+                    "answer": "ddd",
+                    "question": {
+                        "question_id": "x4so9fusn6ck",
+                        "question_type": "text",
+                        "question_title": "Quero dar uma olhadinha no seu instagram, me fala seu @"
+                    }
+                },
+                {
+                    "answer": "ddd",
+                    "question": {
+                        "question_id": "xmqw14zzsl9c",
+                        "question_type": "text",
+                        "question_title": "Você foi indicado por alguém? Se sim, me conta quem foi a benção?"
+                    }
+                },
+                {
+                    "answer": [
+                        "Sim, evento online"
+                    ],
+                    "question": {
+                        "question_id": "xjrbm8u5kskh",
+                        "question_type": "radio",
+                        "question_title": "Você já participou de algum evento nosso, seja gratuito ou pago?"
+                    }
+                },
+                {
+                    "answer": "dddd",
+                    "question": {
+                        "question_id": "x9lm1rhz8mbw",
+                        "question_type": "textarea",
+                        "question_title": "Por que você se interessou pela Universidade Comercial?"
+                    }
+                },
+                {
+                    "answer": "dddd",
+                    "question": {
+                        "question_id": "xnvd8t990s5",
+                        "question_type": "textarea",
+                        "question_title": "Fala um pouco sobre sua jornada profissional até agora. Vale tudo, do mundo físico até aqui no mundo digital, e na área comercial (se houver)."
+                    }
+                },
+                {
+                    "answer": "ddddd",
+                    "question": {
+                        "question_id": "xvg1zdlvy97e",
+                        "question_type": "textarea",
+                        "question_title": "E me conta aqui, qual tem sido o seu maior desafio profissional hoje?"
+                    }
+                },
+                {
+                    "answer": "dddd",
+                    "question": {
+                        "question_id": "x7z8i9mwkeg",
+                        "question_type": "textarea",
+                        "question_title": "O que você acredita que é preciso ser feito para solucionar sua dificuldade/desafio?"
+                    }
+                },
+                {
+                    "answer": {
+                        "value": 333333,
+                        "currency": "BRL"
+                    },
+                    "question": {
+                        "question_id": "xcejr3l5ujvq",
+                        "question_type": "currency",
+                        "question_title": "E qual tem sido o seu faturamento mensal em média?"
+                    }
+                },
+                {
+                    "answer": {
+                        "value": 3333333,
+                        "currency": "BRL"
+                    },
+                    "question": {
+                        "question_id": "xcmqvnpbuggw",
+                        "question_type": "currency",
+                        "question_title": "E hoje, qual é a sua meta de faturamento para 2025?"
+                    }
+                },
+                {
+                    "answer": "ddd",
+                    "question": {
+                        "question_id": "xr18wxdbqhs",
+                        "question_type": "textarea",
+                        "question_title": "Caso você atinja a sua meta, o que pretende realizar e/ou melhorar na sua vida?"
+                    }
+                },
+                {
+                    "answer": [
+                        "R$4.997 à vista no PIX"
+                    ],
+                    "question": {
+                        "question_id": "xrtl39kf8rih",
+                        "question_type": "radio",
+                        "question_title": "Se entendermos que a Universidade Comercial é ideal para o seu momento atual, o investimento para ter acesso por 1 ano é 12x de 499,70 no cartão de crédito ou R$ 4.997 à vista. Como fica melhor para você, cartão de crédito parcelado ou à vista no pix?"
+                    }
+                },
+                {
+                    "answer": [
+                        "Entendido!"
+                    ],
+                    "question": {
+                        "question_id": "xmy8z8um7khg",
+                        "question_type": "radio",
+                        "question_title": "Obrigada pelas respostas!\nVamos entrar em contato em até 48 horas, ok?"
+                    }
+                }
+            ],
+            "respondent_id": "451c2215-9d93-428c-bf46-1316193c7a06"
+        }
+    },
+    "query": {},
+    "params": {
+        "id": "46af006c-2cbf-49ee-80c6-1936a044d3cc"
+    }
+}
