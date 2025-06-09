@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import {
   Box,
   Container,
@@ -76,23 +76,6 @@ function App() {
     return paths;
   };
 
-  // Função para encontrar o caminho mais curto para um nó
-  const findShortestPath = (obj: any, targetPath: string): string | null => {
-    const paths = findAllPaths(obj);
-    const matchingPaths = paths.filter(p => 
-      p.caminho.toLowerCase().includes(targetPath.toLowerCase()) ||
-      String(p.valor).toLowerCase().includes(targetPath.toLowerCase()) ||
-      p.nome.toLowerCase().includes(targetPath.toLowerCase())
-    );
-
-    if (matchingPaths.length === 0) return null;
-
-    // Retorna o caminho mais curto que contém o termo pesquisado
-    return matchingPaths.reduce((shortest, current) => {
-      if (!shortest) return current.caminho;
-      return current.caminho.length < shortest.length ? current.caminho : shortest;
-    }, '');
-  };
 
   const analyzeJson = () => {
     try {
@@ -208,7 +191,7 @@ function App() {
   );
 
   // Ajusta renderJsonNode para usar o wrapper e desenhar as linhas
-  const renderJsonNode = (obj: any, level = 0, currentPath = '', parentIsArray = false, isLast = false) => {
+  const renderJsonNode = (obj: any, level = 0, currentPath = '') => {
     if (!obj || typeof obj !== 'object') return null;
 
     if (Array.isArray(obj)) {
@@ -266,7 +249,7 @@ function App() {
                   </Text>
                 )}
               </Flex>
-              {isObject && !isCollapsed && renderJsonNode(item, level + 1, path, true, last)}
+              {isObject && !isCollapsed && renderJsonNode(item, level + 1, path)}
             </Box>
           </TreeLineWrapper>
         );
@@ -328,7 +311,7 @@ function App() {
                 </Text>
               )}
             </Flex>
-            {isObject && !isCollapsed && renderJsonNode(value, level + 1, path, false, last)}
+            {isObject && !isCollapsed && renderJsonNode(value, level + 1, path)}
           </Box>
         </TreeLineWrapper>
       );
