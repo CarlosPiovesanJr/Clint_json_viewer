@@ -357,7 +357,7 @@ function App() {
       <Container maxW="container.xl" py={8}>
         <Stack>
           <Box>
-            <Heading color="white" size="lg">Visualizador de JSON</Heading>
+            <Heading color="white" size="lg">Visualizador de JSON da Clint</Heading>
             <Text color="whiteAlpha.800" mt={1}>
               Cole seu JSON para visualizar e mapear os campos
             </Text>
