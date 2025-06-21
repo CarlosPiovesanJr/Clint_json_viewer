@@ -10,6 +10,8 @@ import {
   Flex,
   Stack,
   Code,
+  Alert,
+  AlertIcon,
   useColorModeValue,
   IconButton,
   useColorMode
@@ -24,6 +26,7 @@ function App() {
   const [selectedField, setSelectedField] = useState<JsonPath | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [collapsedNodes, setCollapsedNodes] = useState<Set<string>>(new Set());
+  const [errorMessage, setErrorMessage] = useState('');
 
   // Cores do tema
   const bgColor = useColorModeValue('#f7f7fb', 'gray.900');
@@ -84,8 +87,10 @@ function App() {
       setJsonData(parsedData);
       setPaths(newPaths);
       setCollapsedNodes(new Set());
+      setErrorMessage('');
     } catch (error) {
       console.error('Erro ao analisar JSON:', error);
+      setErrorMessage('JSON inválido');
     }
   };
 
@@ -379,6 +384,12 @@ function App() {
                   _hover={{ borderColor: 'purple.400' }}
                   _focus={{ borderColor: 'purple.400', boxShadow: '0 0 0 1px var(--chakra-colors-purple-400)' }}
                 />
+                {errorMessage && (
+                  <Alert status="error" mt={2} borderRadius="md">
+                    <AlertIcon />
+                    {errorMessage}
+                  </Alert>
+                )}
                 <Button
                   mt={4}
                   colorScheme="purple"
