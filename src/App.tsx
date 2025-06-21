@@ -8,6 +8,9 @@ import {
   Button,
   Flex,
   Stack,
+  Code,
+  Alert,
+  AlertIcon,
   useColorModeValue,
   IconButton,
   useColorMode
@@ -17,6 +20,7 @@ import JsonTree from './components/JsonTree';
 import MappingPanel from './components/MappingPanel';
 import SearchInput from './components/SearchInput';
 import type { JsonPath } from './types/json';
+import { findAllPaths } from './utils/findAllPaths';
 
 function App() {
   const [jsonInput, setJsonInput] = useState('');
@@ -25,6 +29,7 @@ function App() {
   const [selectedField, setSelectedField] = useState<JsonPath | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [collapsedNodes, setCollapsedNodes] = useState<Set<string>>(new Set());
+  const [errorMessage, setErrorMessage] = useState('');
 
   // Cores do tema
   const bgColor = useColorModeValue('#f7f7fb', 'gray.900');
@@ -35,45 +40,7 @@ function App() {
 
   const { colorMode, toggleColorMode } = useColorMode();
 
-  // Função para encontrar todos os caminhos no JSON
-  const findAllPaths = (obj: any, currentPath = ''): JsonPath[] => {
-    const paths: JsonPath[] = [];
-
-    const traverse = (obj: any, currentPath = '') => {
-      if (Array.isArray(obj)) {
-        obj.forEach((item, index) => {
-          const newPath = currentPath ? `${currentPath}[${index}]` : `[${index}]`;
-          if (typeof item === 'object' && item !== null) {
-            traverse(item, newPath);
-          } else {
-            paths.push({
-              caminho: newPath,
-              nome: `Item ${index}`,
-              valor: item,
-              tipo: typeof item
-            });
-          }
-        });
-      } else if (typeof obj === 'object' && obj !== null) {
-        for (const [key, value] of Object.entries(obj)) {
-          const newPath = currentPath ? `${currentPath}.${key}` : key;
-          if (typeof value === 'object' && value !== null) {
-            traverse(value, newPath);
-          } else {
-            paths.push({
-              caminho: newPath,
-              nome: key,
-              valor: value,
-              tipo: typeof value
-            });
-          }
-        }
-      }
-    };
-
-    traverse(obj, currentPath);
-    return paths;
-  };
+  // Função para encontrar todos os caminhos no JSON está agora em utils/findAllPaths
 
 
   const analyzeJson = () => {
@@ -83,8 +50,10 @@ function App() {
       setJsonData(parsedData);
       setPaths(newPaths);
       setCollapsedNodes(new Set());
+      setErrorMessage('');
     } catch (error) {
       console.error('Erro ao analisar JSON:', error);
+      setErrorMessage('JSON inválido');
     }
   };
 
@@ -169,6 +138,12 @@ function App() {
                   _hover={{ borderColor: 'purple.400' }}
                   _focus={{ borderColor: 'purple.400', boxShadow: '0 0 0 1px var(--chakra-colors-purple-400)' }}
                 />
+                {errorMessage && (
+                  <Alert status="error" mt={2} borderRadius="md">
+                    <AlertIcon />
+                    {errorMessage}
+                  </Alert>
+                )}
                 <Button
                   mt={4}
                   colorScheme="purple"
