@@ -9,10 +9,10 @@ import {
   useColorModeValue
 } from '@chakra-ui/react';
 import { ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
-import type { JsonPath } from '../types/json';
+import type { JsonPath, JsonValue } from '../types/json';
 
 interface JsonTreeProps {
-  data: any;
+  data: JsonValue;
   paths: JsonPath[];
   search: string;
   collapsedNodes: Set<string>;
@@ -62,7 +62,11 @@ const JsonTree: React.FC<JsonTreeProps> = ({
     </Box>
   );
 
-  const renderJsonNode = (obj: any, level = 0, currentPath = ''): React.ReactNode => {
+  const renderJsonNode = (
+    obj: JsonValue,
+    level = 0,
+    currentPath = ''
+  ): React.ReactNode => {
     if (!obj || typeof obj !== 'object') return null;
 
     if (Array.isArray(obj)) {
@@ -201,7 +205,7 @@ const JsonTree: React.FC<JsonTreeProps> = ({
     });
   };
 
-  const renderFilteredJson = (obj: any, term: string) => {
+  const renderFilteredJson = (obj: JsonValue, term: string) => {
     if (!term) return renderJsonNode(obj);
 
     const matchingPaths = paths.filter(

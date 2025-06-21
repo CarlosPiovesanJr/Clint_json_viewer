@@ -1,9 +1,9 @@
-import type { JsonPath } from '../types/json';
+import type { JsonPath, JsonValue } from '../types/json';
 
-export const findAllPaths = (obj: any, currentPath = ''): JsonPath[] => {
+export const findAllPaths = (obj: JsonValue, currentPath = ''): JsonPath[] => {
   const paths: JsonPath[] = [];
 
-  const traverse = (current: any, path = '') => {
+  const traverse = (current: JsonValue, path = ''): void => {
     if (Array.isArray(current)) {
       current.forEach((item, index) => {
         const newPath = path ? `${path}[${index}]` : `[${index}]`;
