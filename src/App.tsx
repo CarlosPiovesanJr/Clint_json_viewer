@@ -19,12 +19,12 @@ import { SunIcon, MoonIcon } from '@chakra-ui/icons';
 import JsonTree from './components/JsonTree';
 import MappingPanel from './components/MappingPanel';
 import SearchInput from './components/SearchInput';
-import type { JsonPath } from './types/json';
+import type { JsonPath, JsonValue } from './types/json';
 import { findAllPaths } from './utils/findAllPaths';
 
 function App() {
   const [jsonInput, setJsonInput] = useState('');
-  const [jsonData, setJsonData] = useState<any>(null);
+  const [jsonData, setJsonData] = useState<JsonValue | null>(null);
   const [paths, setPaths] = useState<JsonPath[]>([]);
   const [selectedField, setSelectedField] = useState<JsonPath | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
