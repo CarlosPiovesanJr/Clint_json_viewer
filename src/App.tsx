@@ -8,7 +8,6 @@ import {
   Button,
   Flex,
   Stack,
-  Code,
   Alert,
   AlertIcon,
   useColorModeValue,
