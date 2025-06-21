@@ -18,6 +18,7 @@ import {
 } from '@chakra-ui/react';
 import { ChevronDownIcon, ChevronRightIcon, SunIcon, MoonIcon } from '@chakra-ui/icons';
 import type { JsonPath } from './types/json';
+import { findAllPaths } from './utils/findAllPaths';
 
 function App() {
   const [jsonInput, setJsonInput] = useState('');
@@ -39,45 +40,7 @@ function App() {
 
   const { colorMode, toggleColorMode } = useColorMode();
 
-  // Função para encontrar todos os caminhos no JSON
-  const findAllPaths = (obj: any, currentPath = ''): JsonPath[] => {
-    const paths: JsonPath[] = [];
-
-    const traverse = (obj: any, currentPath = '') => {
-      if (Array.isArray(obj)) {
-        obj.forEach((item, index) => {
-          const newPath = currentPath ? `${currentPath}[${index}]` : `[${index}]`;
-          if (typeof item === 'object' && item !== null) {
-            traverse(item, newPath);
-          } else {
-            paths.push({
-              caminho: newPath,
-              nome: `Item ${index}`,
-              valor: item,
-              tipo: typeof item
-            });
-          }
-        });
-      } else if (typeof obj === 'object' && obj !== null) {
-        for (const [key, value] of Object.entries(obj)) {
-          const newPath = currentPath ? `${currentPath}.${key}` : key;
-          if (typeof value === 'object' && value !== null) {
-            traverse(value, newPath);
-          } else {
-            paths.push({
-              caminho: newPath,
-              nome: key,
-              valor: value,
-              tipo: typeof value
-            });
-          }
-        }
-      }
-    };
-
-    traverse(obj, currentPath);
-    return paths;
-  };
+  // Função para encontrar todos os caminhos no JSON está agora em utils/findAllPaths
 
 
   const analyzeJson = () => {
