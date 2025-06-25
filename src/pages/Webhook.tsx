@@ -27,7 +27,7 @@ import {
 import { CopyIcon, RepeatIcon, DeleteIcon } from '@chakra-ui/icons';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Tooltip, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, PopoverHeader, PopoverAnchor } from '@chakra-ui/react';
+import { Tooltip, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverBody } from '@chakra-ui/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -44,7 +44,7 @@ function generateFrontendUrl(id: string) {
 }
 
 const Webhook = () => {
-  const [webhookId, setWebhookId] = useState(null);
+  const [webhookId, setWebhookId] = useState<string | null>(null);
   const [payloads, setPayloads] = useState<Payload[]>([]);
   const [loading, setLoading] = useState(false);
   const [copying, setCopying] = useState(false);
@@ -61,7 +61,6 @@ const Webhook = () => {
   const deleteSelectedPopover = useDisclosure();
   const boxBg = useColorModeValue('gray.100', 'gray.800');
   const payloadBg = useColorModeValue('white', 'gray.900');
-  const payloadText = useColorModeValue('gray.800', 'gray.100');
   const cardBgColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
   const { colorMode } = useColorMode();

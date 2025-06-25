@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Box, Button } from '@chakra-ui/react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Box } from '@chakra-ui/react';
 import Home from './pages/Home';
 import Webhook from './pages/Webhook';
 import JsonViewer from './pages/JsonViewer';

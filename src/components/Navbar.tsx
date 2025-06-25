@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Box, Flex, Button, useColorModeValue, Link as ChakraLink, IconButton, useColorMode } from '@chakra-ui/react';
+import { useState } from 'react';
+import { Box, Flex, Button, useColorModeValue,  IconButton, useColorMode } from '@chakra-ui/react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
@@ -85,9 +85,6 @@ export default function Navbar() {
                   transition={transition}
                   style={{ position: 'absolute', left: '50%', top: 'calc(100% + 12px)', transform: 'translateX(-50%)', zIndex: 200 }}
                 >
-                  <Box bg={bg} borderRadius="xl" boxShadow="xl" border="1px solid" borderColor={border} p={2} minW="200px">
-                    {item.children}
-                  </Box>
                 </motion.div>
               )}
             </AnimatePresence>
