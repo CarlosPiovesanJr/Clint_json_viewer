@@ -31,7 +31,7 @@ import { Tooltip, Popover, PopoverTrigger, PopoverContent, PopoverArrow, Popover
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-const API_URL = 'http://localhost:4000/api/webhook';
+const API_URL = 'https://pages-json-viewer-v2.pbfhge.easypanel.host/api/webhook';
 
 type Payload = {
   id: string;
